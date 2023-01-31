@@ -1,19 +1,20 @@
 {
-  "name": "mlpelectron",
+  "name": "twitchdesktop",
   "version": "1.0.0",
-  "description": "",
+  "description": "An open-source desktop app version of Twitch.tv",
   "main": "index.js",
   "scripts": {
     "install": "sh ./scripts/install.sh",
     "start": "electron ."
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["twitch", "desktop", "electron"],
+  "author": "devrusty",
   "license": "ISC",
   "dependencies": {
     "typescript": "^4.9.5"
   },
   "devDependencies": {
     "electron": "^22.1.0"
-  }
+  },
+  "repository": "https://github.com/devrusty/TwitchDesktop"
 }
