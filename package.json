@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install": "sh ./scripts/install.sh",
     "start": "electron ."
   },
   "keywords": [],
