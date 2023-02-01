@@ -1,4 +1,4 @@
-# Twitch Desktop
+# Twitch Desktop <img src="./icon.png" width="32px">
 Open-source Twitch desktop application using Electron.js.
 
 ## Installation

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "install": "sh ./scripts/install.sh",
-    "start": "electron ."
+    "start": "electron .",
+    "package": "electron-packager . Twitch_Desktop --platform=win32 --arch=x64"
   },
   "keywords": ["twitch", "desktop", "electron"],
   "author": "devrusty",

@@ -1,9 +1,11 @@
-const { BrowserWindow, app } = require("electron");
+const { BrowserWindow, app, Menu } = require("electron");
 
 const createLaunchWindow = () => {
     let win = new BrowserWindow({
         height: 450,
-        width: 450
+        width: 450,
+        icon: "./icon.png",
+        frame: false
     });
 
     win.removeMenu();
@@ -11,13 +13,12 @@ const createLaunchWindow = () => {
     setTimeout(() => {
         createMainWindow();
         win.close();
-    }, 1250);
+    }, 3000);
 }
 
 const createMainWindow = () => {
     let win = new BrowserWindow({
-        title: "da coolest mlp player in the world",
-        titleBarOverlay: false,
+        title: "Twitch",
         icon: "./icon.png",
         height: 800,
         width: 1350
@@ -28,5 +29,22 @@ const createMainWindow = () => {
 }
 
 app.whenReady().then(() => {
+    let template = [
+        {
+            label: "Account",
+            submenu: [
+                { role: "Sign in" },
+                { role: "Sign up" }
+            ]
+        }
+    ];
+    let appmenu = Menu.buildFromTemplate(template);
+
+    Menu.setApplicationMenu(appmenu);
+
+
     createLaunchWindow();
+}).catch((err) => {
+    console.log(err);
+    process.exit(1);
 })
