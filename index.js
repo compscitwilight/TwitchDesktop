@@ -26,6 +26,22 @@ const createMainWindow = () => {
 
     win.removeMenu();
     win.loadURL("https://twitch.tv");
+
+    let size = win.getSize();
+    win.on("close", () => {
+        let w = size[0];
+        let h = size[1];
+        let closeWin = new BrowserWindow({
+            frame: false,
+            height: h,
+            width: w,
+            backgroundColor: "#000000"
+        });
+
+        setTimeout(() => {
+            closeWin.close();
+        }, 500);
+    })
 }
 
 app.whenReady().then(() => {
