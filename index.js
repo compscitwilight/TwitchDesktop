@@ -5,7 +5,9 @@ const createLaunchWindow = () => {
         height: 450,
         width: 450,
         icon: "./icon.png",
-        frame: false
+        frame: false,
+        resizable: false,
+        fullscreenable: false
     });
 
     win.removeMenu();
@@ -27,14 +29,15 @@ const createMainWindow = () => {
     win.removeMenu();
     win.loadURL("https://twitch.tv");
 
-    let size = win.getSize();
     win.on("close", () => {
-        let w = size[0];
-        let h = size[1];
+        let size = win.getSize();
+        let pos = win.getPosition();
         let closeWin = new BrowserWindow({
             frame: false,
-            height: h,
-            width: w,
+            width: size[0],
+            height: size[1],
+            x: pos[0],
+            y: pos[1],
             backgroundColor: "#000000"
         });
 
@@ -45,6 +48,8 @@ const createMainWindow = () => {
 }
 
 app.whenReady().then(() => {
+    createLaunchWindow();
+
     let template = [
         {
             label: "Account",
@@ -55,11 +60,7 @@ app.whenReady().then(() => {
         }
     ];
     let appmenu = Menu.buildFromTemplate(template);
-
     Menu.setApplicationMenu(appmenu);
-
-
-    createLaunchWindow();
 }).catch((err) => {
     console.log(err);
     process.exit(1);

@@ -7,6 +7,8 @@
     <title>Twitch Desktop - made by devrusty</title>
 </head>
 <body>
+    <img style="width: 64px" src="./icon.png">
+    <p id="splash-text"></p>
     <h1>Launching the Twitch desktop application...</h1>
     <p>
         NOTE: this is <b>NOT</b> the official Twitch desktop app, as an official one does not exist.
@@ -28,5 +30,14 @@
             text-decoration: none;
         }
     </style>
+    <script>
+        let splash = document.getElementById("splash-text");
+        let splashes = [
+            "ibai holds the record for the most peak viewers on a Twitch livestream"
+        ]
+
+        let index = Math.floor(Math.random() * splashes.length);
+        splash.innerText = `"${splashes[index]}"`;
+    </script>
 </body>
 </html>
