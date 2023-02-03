@@ -5,6 +5,7 @@ const {
     ipcRenderer,
     contextBridge
 } = require("electron");
+const appConfig = require("./config.json");
 
 let template = [
     {
@@ -51,15 +52,19 @@ const createLaunchWindow = () => {
     splashWin.loadFile("./frontend/launch.html");
     setTimeout(() => {
         splashWin.close();
-        let configWindow = new BrowserWindow({
-            height: 600,
-            width: 600,
-            icon: "./icon.png"
-        })
 
-        configWindow.loadFile("./frontend/config.html");
+        if (!appConfig.skipConfigMenu) {
+            let configWindow = new BrowserWindow({
+                height: 600,
+                width: 600,
+                icon: "./icon.png"
+            })
+    
+            configWindow.loadFile("./frontend/config.html");
+            return;
+        }
+
         createMainWindow();
-        configWindow.close();
         
         /*
         ipcMain.handle("start-app", (event) => {
