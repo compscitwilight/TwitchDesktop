@@ -59,7 +59,7 @@ const createLaunchWindow = () => {
 
         configWindow.loadFile("./frontend/config.html");
         createMainWindow();
-        win.close();
+        configWindow.close();
         
         /*
         ipcMain.handle("start-app", (event) => {
