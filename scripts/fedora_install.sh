@@ -5,6 +5,11 @@ then
     sudo rm -rf /usr/share/TwitchDesktop
 fi
 
+if ! [ -d "/usr/share/nodejs" ]
+then
+    sudo dnf install nodejs
+fi
+
 sudo git clone --quiet https://github.com/devrusty/TwitchDesktop.git /usr/share/TwitchDesktop
 
 if [ -f /usr/share/applications/Twitch.desktop ]
