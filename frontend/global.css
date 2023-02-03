@@ -1,0 +1,21 @@
+body {
+    color: white;
+    font-family: sans-serif;
+}
+
+a {
+    color: #9d95ce;
+    text-decoration: none;
+}
+
+button {
+    border: solid;
+    border-radius: 0px 4px;
+    padding: 4px;
+    background-color: #9d95ce;
+}
+
+button:hover {
+    background-color: #8a82bf;
+    cursor: pointer;
+}

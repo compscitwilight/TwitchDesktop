@@ -1,7 +1,44 @@
-const { BrowserWindow, app, Menu } = require("electron");
+const {
+    BrowserWindow,
+    app,
+    Menu,
+    ipcRenderer,
+    contextBridge
+} = require("electron");
+
+let template = [
+    {
+        label: "Account",
+        submenu: [
+            { label: "Sign in" },
+            { label: "Sign up" }
+        ]
+    },
+    {
+        label: "Prime",
+        submenu: [
+            { label: "Prime Subscription" }
+        ]
+    },
+    {
+        label: "About",
+        submenu: [
+            { label: "Information" },
+            { label: "Repository" },
+            { label: "Credits" }
+        ]
+    },
+    {
+        label: "Debug",
+        submenu: [
+            { label: "Developer Tools" }
+        ]
+    }
+];
+let appmenu = Menu.buildFromTemplate(template);
 
 const createLaunchWindow = () => {
-    let win = new BrowserWindow({
+    let splashWin = new BrowserWindow({
         height: 450,
         width: 450,
         icon: "./icon.png",
@@ -10,11 +47,26 @@ const createLaunchWindow = () => {
         fullscreenable: false
     });
 
-    win.removeMenu();
-    win.loadFile("./launch.html");
+    splashWin.removeMenu();
+    splashWin.loadFile("./frontend/launch.html");
     setTimeout(() => {
+        splashWin.close();
+        let configWindow = new BrowserWindow({
+            height: 600,
+            width: 600,
+            icon: "./icon.png"
+        })
+
+        configWindow.loadFile("./frontend/config.html");
         createMainWindow();
         win.close();
+        
+        /*
+        ipcMain.handle("start-app", (event) => {
+            configWindow.close();
+            createMainWindow();
+        })
+        */
     }, 3000);
 }
 
@@ -26,7 +78,6 @@ const createMainWindow = () => {
         width: 1350
     });
 
-    win.removeMenu();
     win.loadURL("https://twitch.tv");
 
     win.on("close", () => {
@@ -48,19 +99,8 @@ const createMainWindow = () => {
 }
 
 app.whenReady().then(() => {
-    createLaunchWindow();
-
-    let template = [
-        {
-            label: "Account",
-            submenu: [
-                { role: "Sign in" },
-                { role: "Sign up" }
-            ]
-        }
-    ];
-    let appmenu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(appmenu);
+    createLaunchWindow();
 }).catch((err) => {
     console.log(err);
     process.exit(1);

@@ -1,0 +1,56 @@
+<!--
+    For use by the unofficial Twitch desktop application to authenticate the user,
+    configure the installation, and get info on the application.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./global.css" rel="stylesheet">
+    <title>Twitch Desktop</title>
+</head>
+<body>
+    <div>
+        <div class="section">
+            <h2>Update Log - v1.0.1</h2>
+            <ul>
+                <li>Add padding to the launch splash</li>
+                <li>Added splash text to launch splash</li>
+                <li>Add Twitch logo to launch splash</li>
+                <li>Removed the ability to resize and fullscreen launch splash</li>
+                <li>Renamed internal scripts for building</li>
+                <li>Added black window that appears briefly after closing the window</li>
+            </ul>
+        </div>
+        <div class="section">
+            <button id="start-btn">Start Application</button>
+            <img id="footer-png" src="../icon.png">
+        </div>
+    </div>
+    <style>
+        body {
+            background-color: #6441a5;
+        }
+
+        .section {
+            padding: 2px;
+        }
+
+        #footer-png {
+            margin: 24px;
+            width: 64px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        const electron = require("electron");
+        const startBtn = document.getElementById("start-btn");
+        startBtn.addEventListener("click", (event) => {
+            electron.ipcRenderer.emit("start-app");
+        })
+    </script>
+</body>
+</html>
