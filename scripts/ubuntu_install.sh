@@ -38,4 +38,4 @@ echo "StartupNotify=true" | sudo tee -a /usr/share/applications/Twitch.desktop >
 echo "Categories=Entertainment" | sudo tee -a /usr/share/applications/Twitch.desktop > /dev/null
 echo "MimeType=x-scheme-handler/twitch" | sudo tee -a /usr/share/applications/Twitch.desktop > /dev/null
 
-npm install --prefix /usr/share/TwitchDesktop/ &> /dev/null
+sudo npm install --prefix /usr/share/TwitchDesktop/ &> /dev/null
