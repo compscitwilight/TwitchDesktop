@@ -6,7 +6,10 @@
   "scripts": {
     "install:fedora": "sh ./scripts/fedora_install.sh",
     "start:electron": "electron .",
-    "package:windows": "electron-packager . Twitch_Desktop --platform=win32 --arch=x64"
+    "package:windows:32": "electron-packager . Twitch_Desktop_Win-x32 --platform=win32 --arch=x32",
+    "package:windows:64": "electron-packager . Twitch_Desktop_Win-x64 --platform=win32 --arch=x64",
+    "package:darwin:32": "electron-packager . Twitch_Desktop_Mac-x32 --platform=darwin --arch=x32",
+    "package:darwin:64": "electron-packager . Twitch_Desktop_Mac-x64 --platform=darwin --arch=x64"
   },
   "keywords": ["twitch", "desktop", "electron"],
   "author": "devrusty",
