@@ -1,18 +1,19 @@
-#!/bin/sh
-# Written by https://github.com/jacob24068 & https://github.com/devrusty
-if [ -d "/usr/share/TwitchDesktop" ] 
+# TwitchDesktop installer for the Ubuntu Linux distribution
+# Written by https://github.com/devrusty
+
+if [ -d "/usr/share/TwitchDesktop" ]
 then
     sudo rm -rf /usr/share/TwitchDesktop
 fi
 
 if ! [ -d "/usr/share/nodejs" ]
 then
-    sudo dnf install nodejs
+    sudo apt-get install nodejs
 fi
 
 if ! [ -d "/usr/share/git" ]
 then
-    sudo dnf install git
+    sudo apt-get install git
 fi
 
 sudo git clone --quiet https://github.com/devrusty/TwitchDesktop.git /usr/share/TwitchDesktop
