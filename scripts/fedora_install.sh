@@ -1,4 +1,4 @@
-#!/bin/sh
+# Installation script for the Fedora distribution
 # Written by https://github.com/jacob24068 & https://github.com/devrusty
 if [ -d "/usr/share/TwitchDesktop" ] 
 then
